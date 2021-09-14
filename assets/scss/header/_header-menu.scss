@@ -1,24 +1,19 @@
-.header-menu
-{
+.header-menu {
     position: absolute;
     z-index: 1;
     top: 0;
-    right: 0;
     left: 0;
-
-    @include md
-    {
-        background-color: rgba($color-gray-dark, .25);
-
-        @include box-shadow;
+    width: 100%;
+    &__bend {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      max-width: $ul;
+      margin: auto;
+      padding-right: $gap;
+      padding-left: $gap;
     }
-
-    &__container
-    {
-        display: grid;
-
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        @extend %container;
-    }
+    @include md{
+      background-color: rgba(68, 89, 110, 0.25);
+      box-shadow: -3px 3px 20px -10px black;
+  }
 }

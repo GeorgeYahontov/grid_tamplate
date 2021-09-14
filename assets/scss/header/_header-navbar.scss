@@ -1,169 +1,96 @@
-.header-navbar
-{
-    @include md
-    {
-        display: flex;
-
-        justify-content: flex-end;
+ .menu-navbar {
+    display: grid;
+    align-items: center;
+    letter-spacing: 0.1em;
+    justify-items: end;
+    
+    &__btn {
+      width: 30px;
+      height: 23px;
+      position: relative;
+      margin: 20px 0;
+      transform: rotate(0deg);
+      transition: .5s ease-in-out;
+      cursor: pointer;
+      @include md-min{
+      display: none;
     }
-    &__btn
-    {
-        position: relative;
-
-        width: 30px;
-        height: 22.5px;
-        margin: $gap 0;
-
-        cursor: pointer;
-        transition: .5s ease-in-out;
-        transform: rotate(0deg);
-
-        @include md-min
-        {
-            display: none;
-        }
-
-        &-row
-        {
-            position: absolute;
-
-            display: block;
-
-            width: 50%;
-            height: 3px;
-
-            transition: .25s ease-in-out;
-            transform: rotate(0deg);
-
-            opacity: 1;
-            background: $color-light;
-            &:nth-child(even)
-            {
-                left: 50%;
-
-                border-radius: 0 3px 3px 0;
-            }
-            &:nth-child(odd)
-            {
-                left: 0;
-
-                border-radius: 3px 0 0 3px;
-            }
-            &:nth-child(1),
-            &:nth-child(2)
-            {
-                top: 0;
-            }
-            &:nth-child(3),
-            &:nth-child(4)
-            {
-                top: 9px;
-            }
-            &:nth-child(5),
-            &:nth-child(6)
-            {
-                top: 18px;
-            }
-        }
-        &.active span
-        {
-            &:nth-child(1),
-            &:nth-child(6)
-            {
-                transform: rotate(45deg);
-            }
-            &:nth-child(2),
-            &:nth-child(5)
-            {
-                transform: rotate(-45deg);
-            }
-            &:nth-child(1)
-            {
-                top: 3.5px;
-                left: 2.5px;
-            }
-            &:nth-child(2)
-            {
-                top: 3.5px;
-                left: calc(50% - 2.5px);
-            }
-            &:nth-child(3)
-            {
-                left: -50%;
-
-                opacity: 0;
-            }
-            &:nth-child(4)
-            {
-                left: 100%;
-
-                opacity: 0;
-            }
-            &:nth-child(5)
-            {
-                top: 14.5px;
-                left: 2.5px;
-            }
-            &:nth-child(6)
-            {
-                top: 14.5px;
-                left: calc(50% - 2.5px);
-            }
-        }
+    &.open span:nth-child(1) {
+      top: 9px;
+      transform: rotate(135deg);
     }
-
-    &__list
-    {
-        display: grid;
-
-        justify-content: end;
-        grid-template-columns: repeat(auto-fit, minmax(50px, max-content));
-        @include unlist (0 (-$gap) 0 0);
-        @include md-min
-        {
-            display: grid;
-
-            justify-content: end;
-            grid-template-columns: repeat(auto-fit, minmax(50px, max-content));
-        }
-        @include md
-        {
-            position: absolute;
-            top: 100%;
-            right: $gap * 2;
-
-            display: none;
-
-            text-align: right;
-
-            background-color: rgba($color-gray-dark,.9);
-
-            @include box-shadow;
-        }
+    &.open span:nth-child(2) {
+      opacity: 0;
+      left: -30px;
     }
-
-    &__item
-    {
-        margin-right: $gap;
-        margin-right: $gap / 2;
-        margin-left: $gap / 2;
+    &.open span:nth-child(3) {
+      top: 9px;
+      transform: rotate(-135deg);;
     }
-
-    &__link
-    {
-        font-size: 1.125rem;
-
-        display: block;
-
-        padding: $gap ($gap / 2);
-
-        transition: color .5s;
-        letter-spacing: .09em;
-
-        &:hover,
-        &:focus
-        {
-            color: $color-accent;
-        }
+    & span{
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: $color-light;
+      border-radius: 3px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+      &:nth-child(1) {
+        top: 0px;
+      }
+      &:nth-child(2) {
+        top: 9px;
+      }
+      &:nth-child(3) {
+        top: 18px;
+      }
     }
+    }
+    &__list { 
+      @include md-min{
+      display: grid;
+      justify-content: flex-end;
+      width: 100%;
+      margin: 0 (-$gap / 2) 0 0;
+      padding: 0;
+      list-style: none;
+      grid-template-columns: repeat(auto-fit, minmax(50px, max-content));
+      ;
+      }
+      @include md{
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        display: none;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: right;
+        background-color: rgba(68, 89, 110, 0.9);
+        box-shadow: -3px 3px 20px -10px black;
+    }
+    }
+    &-block__item {
+      @include md-min {
+      margin-left: $gap;
+      }
+      @include md {
+        margin:  $gap $gap / 2;
+      }
+    }
+    &__link {
+      display: block;
+      transition: color 0.5s;
+      font-size: 1.125rem;
+      padding:  $gap $gap / 2;
+      @include md {
+        padding: $gap / 2 $gap;
+      }
+    }
+    &__link:hover {
+      color: $color-accent;
+  }
 }

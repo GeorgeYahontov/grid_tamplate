@@ -1,0 +1,106 @@
+.information {
+    background-color: $color-gray-light;
+    grid-area: lf;
+    letter-spacing: 0.055em;
+    @include lg-min {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    @include lg-md {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    @include md {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    &-container {
+        display: grid;
+        max-width: 1340px;
+        margin: auto;
+        padding-right: 20px;
+        padding-left: 20px;
+        @include lg-min {
+            gap: 100px;
+            grid-template-columns: 1fr 271px;
+        }
+        @include lg-md {
+            gap: 40px;
+            grid-template-columns: 1fr 271px;
+        }
+        @include md-sm {
+            gap: 20px;
+            grid-template-columns: 1fr 236px;
+        }
+        @include sm {
+            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+
+        &__img {
+            display: grid;
+            align-content: center;
+            justify-items: center;
+            & img{
+                max-width: 100%;
+                max-height: 480px;
+            }
+        }
+        &__text {
+            & h2{
+                margin-top: 0;
+                @include lg-min {
+                    margin-bottom: 56px;
+                    font-size: 2.5rem;
+                }
+                @include lg-md {
+                    margin-bottom: 42px;
+                    font-size: 2rem;
+                }
+                @include md-sm {
+                    margin-bottom: 36px;
+                    font-size: 1.5rem;
+                }
+                @include sm {
+                    margin-bottom: 36px;
+                    text-align: center;
+                    font-size: 1.5rem;
+                }
+            }
+            & p{
+                @include lg-min {
+                    font-size: 1.125rem;
+                }
+            }
+            & p:first-of-type {
+                position: relative;
+                margin-top: -5px;
+            }
+            & p:first-of-type::after {
+                position: absolute;
+                top: 0;
+                width: 2px;
+                height: 200px;
+                content: "";
+                background-color: rgba(99, 117, 136, 0.1);
+                @include lg-min {
+                   right: -50px;
+                }
+                @include lg-md {
+                    right: -$gap;
+                }
+                @include md-sm {
+                    right: -($gap / 2);
+                }
+                @include sm {
+                    right: -($gap / 2);
+                }
+        
+            }
+
+            & p:last-of-type {
+                margin: 0;
+            }
+        }
+    }
+}

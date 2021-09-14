@@ -1,89 +1,58 @@
-.skill-item
-{
-    position: relative;
-
-    overflow: hidden;
-
+.skill-item {
     background-color: $color-primary;
-
-    &:hover
-    {
-        .skill-item__overlay:hover
-        {
-            opacity: .95 !important;
-        }
-
-        .skill-item__image
-        {
-            transform: scale(1.1);
-        }
-        .skill-item__link
-        {
-            color: $color-accent;
-        }
+    position: relative;
+    overflow: hidden;
+    &__image {
+      height: 100%;
+      background-position: 50% 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: transform 0.5s;
+      @include abs-position;
     }
-    &__overlay
-    {
-        z-index: 1;
-
-        height: 100%;
-
-        transition: opacity .5s;
-
-        opacity: .8;
-        background-color: $color-primary;
-
-        @include abs-position;
+    &__overlay {
+      background-color: $color-primary;
+      opacity: 0.8;
+      z-index: 1;
+      transition: opacity 0.5s;
+      @include abs-position;
     }
-    &__image
-    {
-        height: 100%;
+    &__title {
+      z-index: 2;
+      margin: 0;
+      letter-spacing: 0.1em;
 
-        transition: transform .5s;
-
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
-        background-size: cover;
-
-        @include abs-position;
+      @include abs-position;
+      @include md-min {
+        font-size: 1.25rem;
+      }
+      @include md {
+        font-size: 1.125rem;
+      }
     }
-    &__title
-    {
-        z-index: 2;
-
-        margin: 0;
-
-        letter-spacing: .1em;
-
-        @include md-min
-        {
-            font-size: 1.125rem;
-        }
-        @include md
-        {
-            font-size: 1.125rem;
-        }
-        @include abs-position;
+    &:hover{
+      .skill-item__link {
+        color: $color-accent;
+      }
+      .skill-item__image {
+        transform: scale(1.1);
+      }
+      .skill-item__overlay {
+        opacity: 0.95 !important;
+      }
     }
-    &__link
-    {
-        display: flex;
-
-        padding: $gap;
-
-        transition: color .5s;
-
-        align-items: center;
-        justify-content: center;
-        @include abs-position;
+    &__link {
+      padding: $gap;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: color 0.5s;
+      @include abs-position;
     }
-}
-
-
-@for $i from 1 through 9
-{
-    .skill-item:nth-of-type(#{$i})
-    {
-        grid-area: a#{$i};
+   
+  }
+  @for $i from 1 through 9 {
+  .skill-item:nth-of-type(#{$i}) {
+      grid-area: i#{$i};
     }
-}
+  }
